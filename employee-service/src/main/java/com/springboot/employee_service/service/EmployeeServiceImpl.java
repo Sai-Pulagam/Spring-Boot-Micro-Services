@@ -25,14 +25,18 @@ public class EmployeeServiceImpl implements  EmployeeService{
 
     private WebClient webClient;
 
+    private APIClient apiClient;
+
     public  EmployeeServiceImpl(EmployeeRespository employeeRespository,
                                 ObjectMapper objectMapper,
                                 RestTemplate restTemplate,
-                                WebClient webClient){
+                                WebClient webClient,
+                                APIClient apiClient){
         this.employeeRespository = employeeRespository;
         this.objectMapper = objectMapper;
         this.restTemplate = restTemplate;
         this.webClient = webClient;
+        this.apiClient = apiClient;
     }
 
     @Override
@@ -50,11 +54,13 @@ public class EmployeeServiceImpl implements  EmployeeService{
 //        ResponseEntity<DepartmentDTO> response = restTemplate.getForEntity("http://localhost:8080/api/departments/"+employee.getDepartmentCode()
 //        , DepartmentDTO.class);
 
-        DepartmentDTO departmentDTO = webClient.get()
+      /*  DepartmentDTO departmentDTO = webClient.get()
                 .uri("http://localhost:8080/api/departments/"+employee.getDepartmentCode())
                 .retrieve()
                 .bodyToMono(DepartmentDTO.class)
                 .block();
+*/
+        DepartmentDTO departmentDTO = apiClient.getDepartmentByCode(employee.getDepartmentCode());
 
 //        DepartmentDTO departmentDTO = response.getBody();
 
