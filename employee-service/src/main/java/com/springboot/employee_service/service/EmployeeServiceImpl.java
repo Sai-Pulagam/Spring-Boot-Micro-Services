@@ -48,7 +48,9 @@ public class EmployeeServiceImpl implements  EmployeeService{
     @Override
     public APIResponseDTO getEmployeeByID(Long employeeID) {
         Optional<Employee> result = employeeRespository.findById(employeeID);
-        Employee employee = result.get();
+        Employee employee = null;
+        if(result.isPresent())
+            employee = result.get();
         EmployeeDTO employeeDTO = objectMapper.convertValue(employee,EmployeeDTO.class);
 
 //        ResponseEntity<DepartmentDTO> response = restTemplate.getForEntity("http://localhost:8080/api/departments/"+employee.getDepartmentCode()
