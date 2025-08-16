@@ -1,61 +1,68 @@
 package com.springboot.department_service.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(description = "DepartmentDTO Model Information")
 public class DepartmentDTO {
 
-    private Long departmentID;
-    private String departmentName;
-    private String departmentDescription;
-    private String departmentCode;
+	private Long departmentID;
 
-    public DepartmentDTO() {
-    }
+	@Schema(description = "Department Name")
+	private String departmentName;
 
-    public DepartmentDTO(Long departmentID, String departmentName, String departmentDescription, String departmentCode) {
-        this.departmentID = departmentID;
-        this.departmentName = departmentName;
-        this.departmentDescription = departmentDescription;
-        this.departmentCode = departmentCode;
-    }
+	@Schema(description = "Department Description")
+	private String departmentDescription;
 
-    public Long getDepartmentID() {
-        return departmentID;
-    }
+	@Schema(description = "Department Code")
+	private String departmentCode;
 
-    public void setDepartmentID(Long departmentID) {
-        this.departmentID = departmentID;
-    }
+	public DepartmentDTO() {
+	}
 
-    public String getDepartmentName() {
-        return departmentName;
-    }
+	public DepartmentDTO(Long departmentID, String departmentName, String departmentDescription,
+			String departmentCode) {
+		this.departmentID = departmentID;
+		this.departmentName = departmentName;
+		this.departmentDescription = departmentDescription;
+		this.departmentCode = departmentCode;
+	}
 
-    public void setDepartmentName(String departmentName) {
-        this.departmentName = departmentName;
-    }
+	public Long getDepartmentID() {
+		return departmentID;
+	}
 
-    public String getDepartmentDescription() {
-        return departmentDescription;
-    }
+	public void setDepartmentID(Long departmentID) {
+		this.departmentID = departmentID;
+	}
 
-    public void setDepartmentDescription(String departmentDescription) {
-        this.departmentDescription = departmentDescription;
-    }
+	public String getDepartmentName() {
+		return departmentName;
+	}
 
-    public String getDepartmentCode() {
-        return departmentCode;
-    }
+	public void setDepartmentName(String departmentName) {
+		this.departmentName = departmentName;
+	}
 
-    public void setDepartmentCode(String departmentCode) {
-        this.departmentCode = departmentCode;
-    }
+	public String getDepartmentDescription() {
+		return departmentDescription;
+	}
 
-    @Override
-    public String toString() {
-        return "DepartmentDTO{" +
-                "departmentID=" + departmentID +
-                ", departmentName='" + departmentName + '\'' +
-                ", departmentDescription='" + departmentDescription + '\'' +
-                ", departmentCode='" + departmentCode + '\'' +
-                '}';
-    }
+	public void setDepartmentDescription(String departmentDescription) {
+		this.departmentDescription = departmentDescription;
+	}
+
+	public String getDepartmentCode() {
+		return departmentCode;
+	}
+
+	public void setDepartmentCode(String departmentCode) {
+		this.departmentCode = departmentCode;
+	}
+
+	@Override
+	public String toString() {
+		return "DepartmentDTO{" + "departmentID=" + departmentID + ", departmentName='" + departmentName + '\''
+				+ ", departmentDescription='" + departmentDescription + '\'' + ", departmentCode='" + departmentCode
+				+ '\'' + '}';
+	}
 }
