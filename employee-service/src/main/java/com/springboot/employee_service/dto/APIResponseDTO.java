@@ -4,13 +4,16 @@ public class APIResponseDTO {
 
     private  EmployeeDTO employeeDTO;
     private  DepartmentDTO departmentDTO;
+    private OrganisationDTO organisationDTO;
 
     public APIResponseDTO() {
     }
 
-    public APIResponseDTO(EmployeeDTO employeeDTO, DepartmentDTO departmentDTO) {
+    public APIResponseDTO(EmployeeDTO employeeDTO, DepartmentDTO departmentDTO
+    		,OrganisationDTO organisationDTO) {
         this.employeeDTO = employeeDTO;
         this.departmentDTO = departmentDTO;
+        this.organisationDTO = organisationDTO;
     }
 
     public EmployeeDTO getEmployeeDTO() {
@@ -29,11 +32,19 @@ public class APIResponseDTO {
         this.departmentDTO = departmentDTO;
     }
 
-    @Override
-    public String toString() {
-        return "APIResponseDTO{" +
-                "employeeDTO=" + employeeDTO +
-                ", departmentDTO=" + departmentDTO +
-                '}';
-    }
+	public OrganisationDTO getOrganisationDTO() {
+		return organisationDTO;
+	}
+
+	public void setOrganisationDTO(OrganisationDTO organisationDTO) {
+		this.organisationDTO = organisationDTO;
+	}
+
+	@Override
+	public String toString() {
+		return "APIResponseDTO [employeeDTO=" + employeeDTO + ", departmentDTO=" + departmentDTO + ", organisationDTO="
+				+ organisationDTO + "]";
+	}
+
+    
 }

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.springboot.employee_service.dto.APIResponseDTO;
 import com.springboot.employee_service.dto.DepartmentDTO;
 import com.springboot.employee_service.dto.EmployeeDTO;
+import com.springboot.employee_service.dto.OrganisationDTO;
 import com.springboot.employee_service.entity.Employee;
 import com.springboot.employee_service.respository.EmployeeRespository;
 
@@ -33,18 +34,22 @@ public class EmployeeServiceImpl implements  EmployeeService{
 
     private APIClient apiClient;
     
+    private OrganisationAPIClient organisationAPIClient;
+    
     private static final Logger logger = LoggerFactory.getLogger(EmployeeServiceImpl.class);
 
     public  EmployeeServiceImpl(EmployeeRespository employeeRespository,
                                 ObjectMapper objectMapper,
                                 RestTemplate restTemplate,
                                 WebClient webClient,
-                                APIClient apiClient){
+                                APIClient apiClient,
+                                OrganisationAPIClient organisationAPIClient){
         this.employeeRespository = employeeRespository;
         this.objectMapper = objectMapper;
         this.restTemplate = restTemplate;
         this.webClient = webClient;
         this.apiClient = apiClient;
+        this.organisationAPIClient = organisationAPIClient;
     }
 
     @Override
@@ -75,12 +80,14 @@ public class EmployeeServiceImpl implements  EmployeeService{
                 .block();
 */
         DepartmentDTO departmentDTO = apiClient.getDepartmentByCode(employee.getDepartmentCode());
+        OrganisationDTO organisationDTO = organisationAPIClient.getOrganisationByOrganisationCode(employee.getOrganisationCode());
 
 //        DepartmentDTO departmentDTO = response.getBody();
 
         APIResponseDTO apiResponseDTO = new APIResponseDTO();
         apiResponseDTO.setEmployeeDTO(employeeDTO);
         apiResponseDTO.setDepartmentDTO(departmentDTO);
+        apiResponseDTO.setOrganisationDTO(organisationDTO);
         return apiResponseDTO;
     }
     
