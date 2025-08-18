@@ -1,12 +1,23 @@
 package com.springboot.employee_service.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema( description = "EmployeeDTO Model Information")
+
 public class EmployeeDTO {
 
     private Long employeeID;
+    
+    
+    @Schema( description = "Employee First Name")
     private String firstName;
+    @Schema(description = "Employee Last Name")
     private String lastName;
+    @Schema(description = "Employee Email Address")
     private String email;
+    @Schema(description = "Employee's Department Code")
     	private String departmentCode;
+    @Schema(description = "Employee's Organisation Code")
     	private String organisationCode;
     	
 		public EmployeeDTO(Long employeeID, String firstName, String lastName, String email, String departmentCode,
